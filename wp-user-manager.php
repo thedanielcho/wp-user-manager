@@ -359,14 +359,14 @@ if ( ! class_exists( 'WP_User_Manager' ) ) :
 			do_action( 'before_wpum_init' );
 
 			// Boot the custom routing library.
-			Brain\Cortex::boot();
+			WPUM\WPUM\Brain\Cortex::boot();
 
 			// Start carbon fields and remove the sidebar manager scripts.
-			\Carbon_Fields\Carbon_Fields::boot();
-			$sidebar_manager = \Carbon_Fields\Carbon_Fields::resolve( 'sidebar_manager' );
+			WPUM\WPUM\Carbon_Fields\Carbon_Fields::boot();
+			$sidebar_manager = WPUM\WPUM\Carbon_Fields\Carbon_Fields::resolve( 'sidebar_manager' );
 			remove_action( 'admin_enqueue_scripts', array( $sidebar_manager, 'enqueue_scripts' ) );
 
-			$this->notices                = TDP\WP_Notice::instance();
+			$this->notices                = WPUM\WPUM\TDP\WP_Notice::instance();
 			$this->forms                  = WPUM_Forms::instance();
 			$this->templates              = new WPUM_Template_Loader();
 			$this->emails                 = new WPUM_Emails();
